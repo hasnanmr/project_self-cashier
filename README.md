@@ -10,6 +10,6 @@ Simple Program Using **Python** for self checkout supermarket
 3. Install Python minimum 3.7
 4. Install library in requirements.txt 
 ## run 
-''' 
-python main.py 
-''' 
+```python
+main.py
+```
