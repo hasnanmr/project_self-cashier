@@ -11,5 +11,5 @@ Simple Program Using **Python** for self checkout supermarket
 4. Install library in requirements.txt 
 ## run 
 ```python
-main.py
+python main.py
 ```
