@@ -2,33 +2,35 @@ import pandas as pd
 from termcolor import colored
 
 class Transaction:
-
     def __init__(self):  # initiation of instance class
-        self.transaction = dict()
+        self.transaction = dict()  # Define the empty dict within class Transaction
 
-    # Function 1: Input the item in cart for the first time or add more item in dict
-    # noinspection PyBroadException
+    # Input_item is method for add item in empty dict of class Transaction
     def input_item(self):
+        # show the error from input_item method
         try:
+            # Looping the input while True, break with yes or no condition
             while True:
-                keys = input("Masukkan nama item yang anda beli: ").title()  # here i have taken keys as strings
-                qty_item = int(
-                    input("Masukkan jumlah item yang anda beli: ").strip())  # here i have taken values as integers
+                keys = input("Input item name you want to buy: ").title()  # user input for items as keys in dict
+                qty_item = int(input(
+                    "Input amount of item you want to buy: ").strip())  # user input for quantity as values in dict
                 price_item = int(input(
-                    "Masukkan harga item yang anda beli: ").strip())  # input the price to multiplied with jumlah_item
+                    "Input price of item you want to buy : ").strip())  # user input for price as values in dict
+                # check whether keys in dict of self.transaction or not
                 if keys in self.transaction:
-                    print(
-                        "\nError! Item already in your order, coba kembali masukkan dengan nama yang lain jika barangnya"
-                        " hampir sama")
+                    # if keys in dict of self.transaction will be executed print
+                    print(colored(
+                        "\nError! Item already in your order, try to input another items", "red"))
+                # if keys not in dict of slf.transaction will be input as new keys and values in dict
                 else:
                     self.transaction[keys] = [qty_item, price_item]
                     condition = input(
-                        "Apakah anda ingin memasukkan item belanja lagi? (y/n): ").lower()  # break condition if "n" and "y" for continue
-                    if condition == "n":
+                        "Do you want to input another items to your cart?(y/n): ").lower()  # break condition "y" or "n"
+                    if condition == "n":  # will be printed cart in dataframe and break the method
                         df = pd.DataFrame.from_dict(self.transaction, orient='index',
                                                     columns=['Quantity', 'Price List (Rp)'])
                         print(df.rename_axis('Item(s)').to_markdown())
-                        print("\nYour shopping item(s) have been successfully added to the cart!\n")
+                        print(colored("\nYour shopping item(s) have been successfully added to the cart!\n", "green"))
                         break
                     elif condition == "y":
                         continue
@@ -36,36 +38,43 @@ class Transaction:
                         print("wrong input! please input y or n")
                         print("\nchoose the add item to input more item to the cart\n")
                         break
-        except:
+        except ValueError:
             print('You should input as in the instruction')
+        except NameError:
+            print('only input with number from option')
+        except SyntaxError:
+            print('wrong syntax')
 
-    # Function 2: Delete item already input
+    # Delete_item is method for delete item in dict of class Transaction as keys input
     def delete_item(self):
+        # Looping the input while True, break with yes or no condition
         while True:
-            keys = input("Masukkan nama item yang ingin dihapus: ").title()  # input for keys that will be deleted
+            keys = input(
+                "Input item name that you want to delete from cart: ").title()  # input for keys that will be deleted
             condition = input(
-                "Apakah anda ingin menghapus item belanja lagi (y/n): ").lower()  # break condition if "n" and "y" for continue
+                "Do you want to delete another item in your cart(y/n): ").lower()  # break condition
             self.transaction.pop(keys)
             if condition == "n":
                 df = pd.DataFrame.from_dict(self.transaction, orient='index', columns=['Quantity', 'Price List (Rp)'])
                 print(df.rename_axis('Item(s)').to_markdown())
-                print("\nYour shopping item(s) have been successfully deleted in the cart!\n")
+                print(colored("\nYour shopping item(s) have been successfully deleted in the cart!\n", "green"))
                 break
             else:
                 continue
 
-    # Function 3: Edit or update item already input
+    # Update_item is method for updating item in dict of class Transaction as keys input for the mark
     def update_item(self):
+        # Looping the input while True, break with yes or no condition
         while True:
             print("Choose from this option\n1. Items\n2. Quantity\n3. Price List\n  Write the number on input below!\n")
-            condition = int(input("What do you want to update: "))
+            condition = int(input("What do you want to update from your cart: "))
             if condition == 1:
                 nama_item_lama = input("Input the item name you want to change: ").title()
                 if nama_item_lama in self.transaction:
                     nama_item_baru = input("Input the new item name to be updated: ").title()
                     self.transaction[nama_item_baru] = self.transaction.pop(nama_item_lama)
                 else:
-                    print("Item tidak ditemukan dalam transaksi")
+                    print(colored("Item(s) not found in your cart", "red"))
             elif condition == 2:
                 nama_item = input("Input the item name which you want to change the quantity: ").title()
                 if nama_item in self.transaction:
@@ -73,25 +82,25 @@ class Transaction:
                     harga_item = self.transaction[nama_item][1]
                     self.transaction[nama_item] = [jumlah_item_baru, harga_item]
                 else:
-                    print("Item tidak ditemukan dalam transaksi")
+                    print(colored("Item(s) not found in your cart", "red"))
             elif condition == 3:
-                nama_item = input("Input the item name which you want to change the prize: ").title()
+                nama_item = input("Input the item name which you want to change the price: ").title()
                 if nama_item in self.transaction:
-                    harga_item_baru = int(input("Input the new prize to be updated: ").strip())
+                    harga_item_baru = int(input("Input the new price to be updated: ").strip())
                     jumlah_item = self.transaction[nama_item][0]
                     self.transaction[nama_item] = [jumlah_item, harga_item_baru]
                 else:
-                    print("Item tidak ditemukan dalam transaksi")
+                    print(colored("Item(s) not found in your cart", "red"))
             else:
-                print("Invalid, please choose some numbers from the first sentence!")
-            condition_2 = input("Apakah masih ingin update(y/n): ")
+                print(colored("Invalid, please choose some numbers from the first sentence!", "red"))
+            condition_2 = input("Do you still want to update your cart? (y/n): ")
             if condition_2 == "n":
-                print("\nYour shopping item(s) have been successfully updated in the cart!\n")
+                print(colored("\nYour shopping item(s) have been successfully updated in the cart!\n", "green"))
                 break
             else:
                 continue
 
-    # Function 4: Check the order in cart dictionary
+    # Show_cart is method for show cart as dataframe
     def show_cart(self):
         # convert transaction dictionary to pandas dataframe
         df = pd.DataFrame.from_dict(self.transaction, orient='index', columns=['Quantity', 'Price List/item (Rp)'])
@@ -101,17 +110,18 @@ class Transaction:
 
         print(df.rename_axis('Item(s)').to_markdown())
 
-    # Function 5: Reset all order in cart
+    # Reset_order is method for reset all cart in dict of class Transaction
     def reset_order(self):
         self.transaction.clear()
-        return ("\nAll item have been reset, your cart is empty now!\n")
+        return colored("\nAll item have been reset, your cart is empty now!\n", "green")
 
-    # Function6: Print receipt in cart or for check out the order
+    # Receipt is method for print the receipt of Transaction
     def receipt(self):
         self.show_cart()  # Recall the check_order function
 
         # calculate total payment
-        total_payment = 0
+        total_payment = 0  # Define the variable that will be added next in for loop
+        # Looping for every keys in dict Transaction to print the total payment
         for key in self.transaction.keys():
             total_payment = total_payment + self.transaction[key][0] * self.transaction[key][1]
 
@@ -133,6 +143,6 @@ class Transaction:
             total_payment = total_payment
 
         print(colored(
-            f'\nTotal of your purchase is Rp.{total_payment:,.2f}, because you\'ve got {get_disc} for transaction {worth_more}', 'green'))
-
+            f'\nTotal of your purchase is Rp.{total_payment:,.2f}, because you\'ve got {get_disc} '
+            f'for transaction {worth_more}', 'green'))
         print("-----" * 25)
