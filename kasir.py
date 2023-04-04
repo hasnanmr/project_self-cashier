@@ -113,7 +113,8 @@ class Transaction:
     # Reset_order is method for reset all cart in dict of class Transaction
     def reset_order(self):
         self.transaction.clear()
-        return colored("\nAll item have been reset, your cart is empty now!\n", "green")
+        print(colored("\nAll item have been reset, your cart is empty now!\n", "green"))
+        return
 
     # Receipt is method for print the receipt of Transaction
     def receipt(self):
@@ -143,6 +144,6 @@ class Transaction:
             total_payment = total_payment
 
         print(colored(
-            f'\nTotal of your purchase is Rp.{total_payment:,.2f}, because you\'ve got {get_disc} '
+            f'\nTotal of your purchase that you need to pay is Rp.{total_payment:,.2f}, because you\'ve got {get_disc} '
             f'for transaction {worth_more}', 'green'))
         print("-----" * 25)

@@ -9,9 +9,9 @@ transaction_id = input("Input your transaction id: ").lower()  # make an instanc
 transaction = {transaction_id: Transaction()}
 
 # Print the pop out welcome to the simple program
-print(colored(f"\n..........Welcome {name}, Happy Shopping!.........", "blue"))
+print(colored(f"\n..........Welcome {name}, Happy Shopping!.........".upper(), "blue"))
 print(colored("\n...........Welcome to the SelfMart.................", "green"))
-print(colored(f"\n...........This is cart for {transaction_id}.................\n", "green"))
+print(colored(f"\n...........This is transaction for cart id {transaction_id}.................\n", "green"))
 
 # start with input item into cart of under the user-specified name
 transaction[transaction_id].input_item()
@@ -37,9 +37,16 @@ while True:
                 print(colored("\nYou need to choose Add More Item\n", "blue"))
 
             # If the item already inputted, then will call the update_item from kasir.py
-            else:
+            elif transaction[transaction_id].transaction:
                 transaction[transaction_id].show_cart()
-                transaction[transaction_id].update_item()
+                continue_update = input(colored(  # condition continue update after see in the cart
+                    "\nDo you want to continue update your cart?(y or n): ", "green")).lower()
+                if continue_update == "y":
+                    transaction[transaction_id].update_item()
+                elif continue_update == "n":
+                    pass
+                else:
+                    raise Exception(colored("\nOnly y or n input to continue\n", "red"))
 
         # Here will run delete_item method from kasir.py if the input above is 2
         elif menu == 2:
@@ -78,11 +85,18 @@ while True:
         elif menu == 5:
             print(colored("\nIn this option you will add more item in your cart\n".upper(), "green"))
             transaction[transaction_id].show_cart()  # show the cart of transaction before add more item
-            transaction[transaction_id].input_item()  # then call input_item method from kasir.py for input more item
+            continue_add_item = input(colored(  # condition continue update after see in the cart
+                "\nDo you want to continue add more item in your cart?(y or n): ", "green")).lower()
+            if continue_add_item == "y":
+                transaction[transaction_id].input_item()  # call input_item method from kasir.py for input more item
+            elif continue_add_item == "n":
+                pass
+            else:
+                raise Exception(colored("\nOnly y or n input to continue\n", "red"))
 
         # Here will break the loop from main menu before checkout your shopping, or cancel the transaction
         elif menu == 6:
-            print((colored(f"Thank you for shopping {name}, we are looking forward to see you back soon".title(),
+            print((colored(f"Thank you for come to SelfMart{name}, we are looking forward to see you back soon".title(),
                            "blue")))
             break
 
