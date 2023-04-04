@@ -30,13 +30,13 @@ class Transaction:
                         df = pd.DataFrame.from_dict(self.transaction, orient='index',
                                                     columns=['Quantity', 'Price List (Rp)'])
                         print(df.rename_axis('Item(s)').to_markdown())
-                        print(colored("\nYour shopping item(s) have been successfully added to the cart!\n", "green"))
+                        print(colored("\nYour shopping item(s) have been successfully added to the cart!\n".upper(), "green"))
                         break
                     elif condition == "y":
                         continue
                     else:
-                        print("wrong input! please input y or n")
-                        print("\nchoose the add item to input more item to the cart\n")
+                        print(colored("wrong input! please input y or n", "red"))
+                        print(colored("\nchoose the add item to input more item to the cart\n", "green"))
                         break
         except ValueError:
             print('You should input as in the instruction')
@@ -57,7 +57,7 @@ class Transaction:
             if condition == "n":
                 df = pd.DataFrame.from_dict(self.transaction, orient='index', columns=['Quantity', 'Price List (Rp)'])
                 print(df.rename_axis('Item(s)').to_markdown())
-                print(colored("\nYour shopping item(s) have been successfully deleted in the cart!\n", "green"))
+                print(colored("\nYour shopping item(s) have been successfully deleted in the cart!\n".upper(), "green"))
                 break
             else:
                 continue
@@ -95,7 +95,7 @@ class Transaction:
                 print(colored("Invalid, please choose some numbers from the first sentence!", "red"))
             condition_2 = input("Do you still want to update your cart? (y/n): ")
             if condition_2 == "n":
-                print(colored("\nYour shopping item(s) have been successfully updated in the cart!\n", "green"))
+                print(colored("\nYour shopping item(s) have been successfully updated in the cart!\n".upper(), "green"))
                 break
             else:
                 continue
@@ -113,7 +113,7 @@ class Transaction:
     # Reset_order is method for reset all cart in dict of class Transaction
     def reset_order(self):
         self.transaction.clear()
-        print(colored("\nAll item have been reset, your cart is empty now!\n", "green"))
+        print(colored("\nAll item have been reset, your cart is empty now!\n".upper(), "green"))
         return
 
     # Receipt is method for print the receipt of Transaction

@@ -46,7 +46,7 @@ while True:
                 elif continue_update == "n":
                     pass
                 else:
-                    raise Exception(colored("\nOnly y or n input to continue\n", "red"))
+                    raise NameError
 
         # Here will run delete_item method from kasir.py if the input above is 2
         elif menu == 2:
@@ -92,7 +92,7 @@ while True:
             elif continue_add_item == "n":
                 pass
             else:
-                raise Exception(colored("\nOnly y or n input to continue\n", "red"))
+                raise NameError
 
         # Here will break the loop from main menu before checkout your shopping, or cancel the transaction
         elif menu == 6:
@@ -101,8 +101,8 @@ while True:
             break
 
     except NameError:
-        print('only input with number from option')
+        print(colored('Wrong input should be y or no', 'red'))
     except SyntaxError:
-        print('wrong syntax')
+        print(colored('Wrong syntax', 'red'))
     except ValueError:
-        print('input by number from option')
+        print(colored('input by number from option', 'red'))
