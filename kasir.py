@@ -1,7 +1,9 @@
 import pandas as pd
 from termcolor import colored
 
+
 class Transaction:
+
     def __init__(self):  # initiation of instance class
         self.transaction = dict()  # Define the empty dict within class Transaction
 
@@ -30,7 +32,8 @@ class Transaction:
                         df = pd.DataFrame.from_dict(self.transaction, orient='index',
                                                     columns=['Quantity', 'Price List (Rp)'])
                         print(df.rename_axis('Item(s)').to_markdown())
-                        print(colored("\nYour shopping item(s) have been successfully added to the cart!\n".upper(), "green"))
+                        print(colored
+                              ("\nYour shopping item(s) have been successfully added to the cart!\n".upper(), "green"))
                         break
                     elif condition == "y":
                         continue

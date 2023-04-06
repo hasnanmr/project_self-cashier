@@ -26,7 +26,7 @@ while True:
         print("-----" * 20)
         print(
             colored("1. Edit Item\n2. Delete Item\n3. Reset item\n4. Print Receipt\n5. Add More Item\n6. Cancel Transaction\n", "green"))
-        menu = int(input(colored("Input a number based on the option above: ", "green").strip()))
+        menu = int(input(colored("Enter from the option above : ", "green").strip()))
         print("-----" * 25)
 
         # Here will run update_item method from kasir.py if the input above is 1
@@ -40,7 +40,7 @@ while True:
             elif transaction[transaction_id].transaction:
                 transaction[transaction_id].show_cart()
                 continue_update = input(colored(  # condition continue update after see in the cart
-                    "\nDo you want to continue update your cart?(y or n): ", "green")).lower()
+                    "\nDo you want to continue update item(s) in your cart?(y or n): ", "green")).lower()
                 if continue_update == "y":
                     transaction[transaction_id].update_item()
                 elif continue_update == "n":
@@ -55,8 +55,16 @@ while True:
                 print(colored("\nTHERE IS NO ITEM TO BE DELETED\n", "red"))
                 print(colored("\nYou need to choose add more item\n", "blue"))
             # If the item already inputted, then will call the delete_item method from kasir.py
-            else:
-                transaction[transaction_id].delete_item()
+            elif transaction[transaction_id].transaction:
+                transaction[transaction_id].show_cart()
+                continue_delete = input(colored(  # condition continue update after see in the cart
+                    "\nDo you want to continue delete item(s) in your cart?(y or n): ", "green")).lower()
+                if continue_delete == "y":
+                    transaction[transaction_id].delete_item()
+                elif continue_delete == "n":
+                    pass
+                else:
+                    raise NameError
 
         # Here will run reset_order method from kasir.py if the input above is 3
         elif menu == 3:
