@@ -17,16 +17,15 @@ Make a self-service for check out in the supermarket. The customer should input 
 ## Library:
 Already available in the requirement.txt file
 
-Flowchart of the program:
-
-
+## Flowchart of the program:
+![alt text](https://github.com/hasnanmr/project_self-cashier/raw/master/src/common/images/1.png "Flowchart")
 
 
 Code Explanation:
 
 
 
-**Step to run the program**:
+## Step to run the program:
 1. Clone the repository
 2. Deploy your IDE will be the best outcome
 3. Install Python minimum 3.7
