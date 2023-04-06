@@ -104,7 +104,7 @@ while True:
 
         # Here will break the loop from main menu before checkout your shopping, or cancel the transaction
         elif menu == 6:
-            print((colored(f"Thank you for come to SelfMart{name}, we are looking forward to see you back soon".title(),
+            print((colored(f"Thank you for come to SelfMart {name}, we are looking forward to see you back soon".title(),
                            "blue")))
             break
 
