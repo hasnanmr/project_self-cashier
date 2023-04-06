@@ -1,5 +1,5 @@
-# Super Cashier System
-Simple Program Using **Python** for self checkout supermarket
+# Super Cashier Self Service System
+Simple Program Using **Python Language Program** for self checkout supermarket
 
 ## Background Projects:
 Make a self-service for check out in the supermarket. The customer should input the item quantity and the price by themself for their transaction. The goal is wherever the customer is,  still be able to do their shopping at the supermarket. 
