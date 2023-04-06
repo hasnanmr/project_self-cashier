@@ -31,4 +31,4 @@ Code Explanation:
 2. Deploy your IDE will be the best outcome
 3. Install Python minimum 3.7
 4. Make sure you install the virtual environment from the requirement.txt file
-5. run the ''' python main.py '''
+5. run the python main.py
