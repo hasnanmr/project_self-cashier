@@ -9,6 +9,7 @@ class Transaction:
 
     # Input_item is method for add item in empty dict of class Transaction
     def input_item(self):
+        """Function for input item in empty dict from self.transaction with input of string"""
         # show the error from input_item method
         try:
             # Looping the input while True, break with yes or no condition
@@ -50,6 +51,7 @@ class Transaction:
 
     # Delete_item is method for delete item in dict of class Transaction as keys input
     def delete_item(self):
+        """Function for delete item in cart from self.transaction with input of string"""
         # Looping the input while True, break with yes or no condition
         while True:
             keys = input(
@@ -67,6 +69,7 @@ class Transaction:
 
     # Update_item is method for updating item in dict of class Transaction as keys input for the mark
     def update_item(self):
+        """Function for update item in cart from self.transaction with input of string"""
         # Looping the input while True, break with yes or no condition
         while True:
             print("Choose from this option\n1. Items\n2. Quantity\n3. Price List\n  Write the number on input below!\n")
@@ -105,6 +108,7 @@ class Transaction:
 
     # Show_cart is method for show cart as dataframe
     def show_cart(self):
+        """Function for print items in cart from self.transaction with output of table"""
         # convert transaction dictionary to pandas dataframe
         df = pd.DataFrame.from_dict(self.transaction, orient='index', columns=['Quantity', 'Price List/item (Rp)'])
 
@@ -115,12 +119,13 @@ class Transaction:
 
     # Reset_order is method for reset all cart in dict of class Transaction
     def reset_order(self):
+        """Function for reset all items in cart of self.transaction with input of string"""
         self.transaction.clear()
-        print(colored("\nAll item have been reset, your cart is empty now!\n".upper(), "green"))
-        return
+        return(colored("\nAll item have been reset, your cart is empty now!\n".upper(), "green"))
 
     # Receipt is method for print the receipt of Transaction
     def receipt(self):
+        """Function for print the receipt for final check out of self.transaction with output of total payment"""
         self.show_cart()  # Recall the check_order function
 
         # calculate total payment
