@@ -1,17 +1,17 @@
-from kasir import Transaction
+from checkout import Transaction
 from termcolor import colored
 
 
 name = input("Input your name = ").title()  # user input the name to know who is shopping
-transaction_id = input("Input your transaction id: ").lower()  # make an instance object with user input
+transaction_id = input("Input your transaction id: ").lower()  # save the transaction id fot an instance object
 
-# create an instance of Transaction and save it under the user-specified name
+# create an instance of Transaction with transaction id has been inputted
 transaction = {transaction_id: Transaction()}
 
 # Print the pop out welcome to the simple program
 print(colored(f"\n..........Welcome {name}, Happy Shopping!.........".upper(), "blue"))
-print(colored("\n...........Welcome to the SelfMart.................", "green"))
-print(colored(f"\n...........This is transaction for cart id {transaction_id}.................\n", "green"))
+print(colored("\n...........Welcome to the SelfMart.................".upper(), "green"))
+print(colored(f"\n...........This is transaction for cart id {transaction_id}.................\n".upper(), "green"))
 
 # start with input item into cart of under the user-specified name
 transaction[transaction_id].input_item()
@@ -21,7 +21,7 @@ while True:
     try:
         # Print the option
         print(colored(
-            "These are self service for Check Out your order\n ",
+            "These is self service for Check Out your order\n".title(),
             "blue"))
         print("-----" * 20)
         print(
