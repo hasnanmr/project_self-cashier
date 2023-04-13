@@ -23,7 +23,7 @@ class Transaction:
                 if keys in self.transaction:
                     # if keys in dict of self.transaction will be executed print
                     print(colored(
-                        "\nError! Item already in your order, try to input another items", "red"))
+                        "\nError! Item already in your order, try to input another items".upper(), "red"))
                 # if keys not in dict of slf.transaction will be input as new keys and values in dict
                 else:
                     self.transaction[keys] = [qty_item, price_item]
@@ -80,7 +80,7 @@ class Transaction:
                     nama_item_baru = input("Input the new item name to be updated: ").title()
                     self.transaction[nama_item_baru] = self.transaction.pop(nama_item_lama)
                 else:
-                    print(colored("Item(s) not found in your cart", "red"))
+                    print(colored("Item(s) not found in your cart".upper(), "red"))
             elif condition == 2:
                 nama_item = input("Input the item name which you want to change the quantity: ").title()
                 if nama_item in self.transaction:
@@ -88,7 +88,7 @@ class Transaction:
                     harga_item = self.transaction[nama_item][1]
                     self.transaction[nama_item] = [jumlah_item_baru, harga_item]
                 else:
-                    print(colored("Item(s) not found in your cart", "red"))
+                    print(colored("Item(s) not found in your cart".upper(), "red"))
             elif condition == 3:
                 nama_item = input("Input the item name which you want to change the price: ").title()
                 if nama_item in self.transaction:
@@ -96,7 +96,7 @@ class Transaction:
                     jumlah_item = self.transaction[nama_item][0]
                     self.transaction[nama_item] = [jumlah_item, harga_item_baru]
                 else:
-                    print(colored("Item(s) not found in your cart", "red"))
+                    print(colored("Item(s) not found in your cart".upper(), "red"))
             else:
                 print(colored("Invalid, please choose some numbers from the first sentence!", "red"))
             condition_2 = input("Do you still want to update your cart? (y/n): ")
