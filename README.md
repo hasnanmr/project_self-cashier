@@ -22,7 +22,7 @@ Already available in the **requirement.txt** file
 ![alt text](https://github.com/hasnanmr/project_self-cashier/blob/main/pictures/1.png "Flowchart")
 
 
-## Code Explanation:
+## Methods Explanation:
 1. **add_item**
 * input item in cart for every keys as item and values as price and quantity for dict in class Transaction
 * could be use multiple times until the meet no condition
@@ -40,7 +40,7 @@ Already available in the **requirement.txt** file
 * final checkout for the transactions for the total payment
  
 
-## Step to run the program:
+## Step to run the programme:
 1. Clone the repository
 2. Deploy your IDE will be the best outcome
 3. Install Python minimum 3.7
